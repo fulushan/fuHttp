@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">fuHttp</string>
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">文件</string>
+    <string name="title_notifications">关于我</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
