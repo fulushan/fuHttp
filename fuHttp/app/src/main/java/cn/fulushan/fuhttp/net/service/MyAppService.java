@@ -1,6 +1,4 @@
-package cn.fulushan.fuhttp.service;
-
-import java.util.List;
+package cn.fulushan.fuhttp.net.service;
 
 import cn.fulushan.fuhttp.bean.Article;
 import retrofit2.Call;

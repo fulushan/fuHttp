@@ -2,20 +2,17 @@ package cn.fulushan.fuhttp.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.fulushan.fuhttp.R;
 import cn.fulushan.fuhttp.bean.Article;
 import cn.fulushan.fuhttp.config.Url;
-import cn.fulushan.fuhttp.service.MyAppService;
+import cn.fulushan.fuhttp.net.service.MyAppService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,7 +48,7 @@ public class ReTrofitActivity extends AppCompatActivity implements View.OnClickL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-         service = retrofit.create(MyAppService.class);
+//         service = retrofit.create(MyAppService.class);
     }
 
     @Override

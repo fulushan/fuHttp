@@ -12,7 +12,12 @@ import butterknife.ButterKnife;
 import cn.fulushan.fuhttp.R;
 import cn.fulushan.fuhttp.bean.Article;
 import cn.fulushan.fuhttp.config.Url;
-import cn.fulushan.fuhttp.service.MyAppService;
+import cn.fulushan.fuhttp.net.FuRestClient;
+import cn.fulushan.fuhttp.net.callback.IError;
+import cn.fulushan.fuhttp.net.callback.IFailure;
+import cn.fulushan.fuhttp.net.callback.IRequest;
+import cn.fulushan.fuhttp.net.callback.ISuccess;
+import cn.fulushan.fuhttp.net.service.MyAppService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,13 +49,6 @@ public class ReTrofitRxJavaActivity extends AppCompatActivity implements View.On
         quertArtBtn.setOnClickListener(this);
 
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Url.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-
-         service = retrofit.create(MyAppService.class);
     }
 
     @Override
@@ -60,17 +58,37 @@ public class ReTrofitRxJavaActivity extends AppCompatActivity implements View.On
                 ReTrofitRxJavaActivity.this.finish();
                 break;
             case R.id.quert_art_btn:
-                Call<Article> call =   service.listArt(0);
-                call.enqueue(new Callback<Article>() {
-                    @Override
-                    public void onResponse(Call<Article> call, Response<Article> response) {
-                        resultTv.setText(response.body().getData().getDatas().get(10).getTitle());
-                    }
-                    @Override
-                    public void onFailure(Call<Article> call, Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
+
+                FuRestClient.builder()
+                        .url("www.baidu.com")
+                        .params("d","")
+                        .iRequest(new IRequest() {
+                            @Override
+                            public void onResuestStart() {
+
+                            }
+
+                            @Override
+                            public void onResuestEnd() {
+
+                            }
+                        }).iSuccess(new ISuccess() {
+                            @Override
+                            public void onSuccess(String response) {
+
+                            }
+                        }).iFailure(new IFailure() {
+                            @Override
+                            public void onFailure() {
+
+                            }
+                        }).iError(new IError() {
+                            @Override
+                            public void onError(int code, String response) {
+
+                            }
+                        })
+                        .build();
 
                 break;
         }
