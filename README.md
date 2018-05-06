@@ -8,7 +8,6 @@
 
 **fuHttp** 专为Android封装的网络请求框架 整合okhttp+retrofit+rxjava
 
-> * 支持1
-> * 支持2
-> * 支持3
-> * 支持4
+使用方法：
+
+     implementation 'com.github.fulushan:fuHttp:v0.1'
