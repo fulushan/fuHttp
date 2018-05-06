@@ -2,11 +2,9 @@ package cn.fulushan.fuhttp.net;
 
 import java.util.concurrent.TimeUnit;
 
-import cn.fulushan.fuhttp.config.Url;
 import cn.fulushan.fuhttp.net.service.FuRestService;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
@@ -23,7 +21,7 @@ public class FuRestCreator {
     private static final class RetrofitHolder{
 
        private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
-                .baseUrl(Url.BASE_URL)
+//                .baseUrl(Url.BASE_URL)
                 .client(OkHttpHolder.client)
                .addConverterFactory(ScalarsConverterFactory.create())
                 .build();

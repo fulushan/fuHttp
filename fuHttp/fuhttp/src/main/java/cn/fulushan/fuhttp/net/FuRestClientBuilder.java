@@ -7,6 +7,8 @@ import cn.fulushan.fuhttp.net.callback.IError;
 import cn.fulushan.fuhttp.net.callback.IFailure;
 import cn.fulushan.fuhttp.net.callback.IRequest;
 import cn.fulushan.fuhttp.net.callback.ISuccess;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * Created by fulushan on 18/5/5.
@@ -21,6 +23,17 @@ public class FuRestClientBuilder {
     private  ISuccess iSuccess;
     private  IFailure iFailure;
     private  IError iError;
+    private  RequestBody requestBody;
+
+//    public final RestClientBuilder file(File file) {
+//        this.mFile = file;
+//        return this;
+//    }
+//
+//    public final RestClientBuilder file(String file) {
+//        this.mFile = new File(file);
+//        return this;
+//    }
 
     FuRestClientBuilder() {
 
@@ -42,6 +55,11 @@ public class FuRestClientBuilder {
         return this;
     }
 
+    public final FuRestClientBuilder raw(String raw) {
+        this.requestBody = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), raw);
+        return this;
+    }
+
     public final FuRestClientBuilder iRequest(IRequest iRequest){
         this.iRequest =  iRequest;
         return this;
@@ -60,7 +78,7 @@ public class FuRestClientBuilder {
     }
 
     public final FuRestClient build(){
-        return new FuRestClient(url,params,iRequest,iSuccess,iFailure,iError);
+        return new FuRestClient(url,params,iRequest,iSuccess,iFailure,iError,requestBody);
     }
 
 }

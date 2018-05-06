@@ -17,7 +17,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ReTrofitActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,7 +44,6 @@ public class ReTrofitActivity extends AppCompatActivity implements View.OnClickL
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Url.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
 //         service = retrofit.create(MyAppService.class);
@@ -58,17 +56,17 @@ public class ReTrofitActivity extends AppCompatActivity implements View.OnClickL
                 ReTrofitActivity.this.finish();
                 break;
             case R.id.quert_art_btn:
-                Call<Article> call =   service.listArt(0);
-                call.enqueue(new Callback<Article>() {
-                    @Override
-                    public void onResponse(Call<Article> call, Response<Article> response) {
-                        resultTv.setText(response.body().getData().getDatas().get(10).getTitle());
-                    }
-                    @Override
-                    public void onFailure(Call<Article> call, Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
+//                Call<Article> call =   service.listArt(0);
+//                call.enqueue(new Callback<Article>() {
+//                    @Override
+//                    public void onResponse(Call<Article> call, Response<Article> response) {
+//                        resultTv.setText(response.body().getData().getDatas().get(10).getTitle());
+//                    }
+//                    @Override
+//                    public void onFailure(Call<Article> call, Throwable t) {
+//                        t.printStackTrace();
+//                    }
+//                });
 
                 break;
         }

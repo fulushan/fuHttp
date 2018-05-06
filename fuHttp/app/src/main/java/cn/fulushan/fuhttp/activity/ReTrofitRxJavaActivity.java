@@ -10,20 +10,12 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.fulushan.fuhttp.R;
-import cn.fulushan.fuhttp.bean.Article;
-import cn.fulushan.fuhttp.config.Url;
 import cn.fulushan.fuhttp.net.FuRestClient;
 import cn.fulushan.fuhttp.net.callback.IError;
 import cn.fulushan.fuhttp.net.callback.IFailure;
 import cn.fulushan.fuhttp.net.callback.IRequest;
 import cn.fulushan.fuhttp.net.callback.ISuccess;
 import cn.fulushan.fuhttp.net.service.MyAppService;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ReTrofitRxJavaActivity extends AppCompatActivity implements View.OnClickListener {
 

@@ -6,5 +6,5 @@ package cn.fulushan.fuhttp.net.callback;
 
 public interface IError {
 
-     void onError(int code,String response);
+     void onError(int code, String response);
 }
