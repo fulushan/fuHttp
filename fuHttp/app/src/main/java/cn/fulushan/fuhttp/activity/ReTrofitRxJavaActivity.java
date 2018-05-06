@@ -60,7 +60,7 @@ public class ReTrofitRxJavaActivity extends AppCompatActivity implements View.On
             case R.id.quert_art_btn:
 
                 FuRestClient.builder()
-                        .url("www.baidu.com")
+                        .url("")
                         .params("d","")
                         .iRequest(new IRequest() {
                             @Override
@@ -75,6 +75,7 @@ public class ReTrofitRxJavaActivity extends AppCompatActivity implements View.On
                         }).iSuccess(new ISuccess() {
                             @Override
                             public void onSuccess(String response) {
+                                resultTv.setText(response);
 
                             }
                         }).iFailure(new IFailure() {
@@ -88,7 +89,8 @@ public class ReTrofitRxJavaActivity extends AppCompatActivity implements View.On
 
                             }
                         })
-                        .build();
+                        .build()
+                .get();
 
                 break;
         }

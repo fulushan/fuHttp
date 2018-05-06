@@ -7,6 +7,7 @@ import cn.fulushan.fuhttp.net.service.FuRestService;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by fulushan on 18/5/5.
@@ -15,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FuRestCreator {
 
 
-    public FuRestService getFuRestService(){
+    public static FuRestService getFuRestService(){
         return FuRestServiceHolder.FU_REST_SERVICE;
     }
 
@@ -24,7 +25,7 @@ public class FuRestCreator {
        private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
                 .baseUrl(Url.BASE_URL)
                 .client(OkHttpHolder.client)
-                .addConverterFactory(GsonConverterFactory.create())
+               .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
     }
 

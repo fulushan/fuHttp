@@ -6,6 +6,11 @@ import cn.fulushan.fuhttp.net.callback.IError;
 import cn.fulushan.fuhttp.net.callback.IFailure;
 import cn.fulushan.fuhttp.net.callback.IRequest;
 import cn.fulushan.fuhttp.net.callback.ISuccess;
+import cn.fulushan.fuhttp.net.callback.RequestCallBack;
+import cn.fulushan.fuhttp.net.enums.HttpMethod;
+import cn.fulushan.fuhttp.net.service.FuRestService;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 /**
  * Created by fulushan on 18/5/5.
@@ -35,4 +40,42 @@ public class FuRestClient {
         return new FuRestClientBuilder();
     }
 
+
+    public void request(HttpMethod method){
+
+        FuRestService restService = FuRestCreator.getFuRestService();
+        Call<String> call = null;
+
+        if(iRequest!=null){
+            iRequest.onResuestStart();
+        }
+
+        switch (method){
+            case GET:
+                call = restService.get(url,params);
+                break;
+            case POST:
+                break;
+            case DELETE:
+                break;
+            case DOWNLOAD:
+                break;
+            case UPLOAD:
+                break;
+            default:
+                break;
+        }
+
+        if(call!=null){
+         call.enqueue(getRequestCallBack());
+        }
+    }
+
+    private Callback<String> getRequestCallBack() {
+        return new RequestCallBack(iRequest,iSuccess,iFailure,iError);
+    }
+
+    public final void get(){
+        request(HttpMethod.GET);
+    }
 }
